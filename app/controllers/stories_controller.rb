@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
 
   def update
     if @story.update(story_permit)
-      redirect_to stories_path,notice: '文章更新成功'
+      redirect_to stories_path,notice: '故事更新成功'
     else
       render :edit
     end
@@ -26,7 +26,11 @@ class StoriesController < ApplicationController
     else
       render :new
     end  
-    
+  end
+
+  def destroy
+    @story.destroy
+    redirect_to stories_path,notice: '故事已刪除成功'
   end
 
   private
