@@ -14,7 +14,16 @@ class StoriesController < ApplicationController
 
   def update
     if @story.update(story_permit)
-      redirect_to stories_path,notice: '故事更新成功'
+      case 
+      when params[:publish]
+        @story.publish!
+        redirect_to stories_path,notice: '故事已發布'
+      when params[:unpublish]  
+        @story.unpublish!
+        redirect_to stories_path,notice: '故事已下架'
+      else
+        redirect_to edit_story_path(@story),notice: '故事更新成功'
+      end 
     else
       render :edit
     end
