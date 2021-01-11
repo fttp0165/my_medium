@@ -6,9 +6,15 @@
   <div class="field">
     <%= f.label :email %><br />
     <div class="container">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"input" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"input " %>
     </div>
   </div>
+  <div class="field">
+    <%= f.label :username,"使用者名稱" %><br />
+    <%= f.text_field :username ,class:"input is-medium"%>
+    <em class="help">範例：jonny</em>
+  </div>
+
 
   <div class="field">
     <%= f.label :password %>
