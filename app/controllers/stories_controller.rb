@@ -22,7 +22,11 @@ class StoriesController < ApplicationController
   def create
     @story=current_user.stories.new(story_permit)
     if @story.save
-     redirect_to stories_path,notice: '新增成功'
+     if params[:publish]
+      redirect_to stories_path,notice: '已成功發布故事'
+     else
+      redirect_to eedit_story_path(@story),notice: '故事儲存'
+     end 
     else
       render :new
     end  
