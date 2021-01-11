@@ -4,6 +4,7 @@ class StoriesController < ApplicationController
   def  index
     @stories=current_user.stories.order(created_at: :desc)
   end
+
   def  new
     @story=current_user.stories.new
   end
@@ -23,19 +24,21 @@ class StoriesController < ApplicationController
         redirect_to stories_path,notice: '故事已下架'
       else
         redirect_to edit_story_path(@story),notice: '故事更新成功'
-      end 
+      end
+    
     else
       render :edit
-    end
+    end 
   end
+
   def create
     @story=current_user.stories.new(story_permit)
     if @story.save
-     if params[:publish]
-      redirect_to stories_path,notice: '已成功發布故事'
-     else
-      redirect_to eedit_story_path(@story),notice: '故事儲存'
-     end 
+      if params[:publish]
+        redirect_to stories_path,notice: '已成功發布故事'
+      else
+        redirect_to eedit_story_path(@story),notice: '故事儲存'
+      end 
     else
       render :new
     end  
@@ -48,7 +51,7 @@ class StoriesController < ApplicationController
 
   private
   def find_story
-    @story=current_user.stories.find(params[:id])
+    @story=current_user.stories.friendly.find(params[:id])
   end
   def story_permit
     params.require(:story).permit(:title,:content)
