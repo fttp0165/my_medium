@@ -1,6 +1,6 @@
 class PagesController < ApplicationController  
   def index
-  	@stories=Story.order(created_at: :desc).includes(:user).where(status: :published)
+  	@stories=Story.published.order(created_at: :desc).includes(:user)
   end
 
   def new

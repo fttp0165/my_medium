@@ -41,6 +41,12 @@ class Story < ApplicationRecord
   #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
   default_scope{where(deleted_at:nil)}
+  
+  #scope :published_stories,->{where(status:'published')}
+
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #instance method
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
   def destroy
     update(deleted_at: Time.now)
