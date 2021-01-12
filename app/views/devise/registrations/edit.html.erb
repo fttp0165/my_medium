@@ -15,9 +15,16 @@
     <em class="help">範例：jonny</em>
   </div>
 
+  <div class="file">
+     <%= f.label :avatar,"大頭照" ,class:"file-label"%><br />
+     <%= f.file_field :avatar %>
+  </div>
+  
+  <%= avatar(current_user,size:[250,250])%>
+
   <div class="field">
     <%= f.label :intro,"個人簡介" %><br />
-    <%= f.text_area :intro,rows:5 ,class:"textarea is-primary is-medium"%>
+    <%= f.text_area :intro,rows:5 ,class:"textarea is-medium"%>
     <em class="help">讓大家認識你</em>
   </div>
 
