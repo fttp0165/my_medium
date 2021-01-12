@@ -33,6 +33,7 @@ class StoriesController < ApplicationController
 
   def create
     @story=current_user.stories.new(story_permit)
+    @story.publish! if params[:publish]
     if @story.save
       if params[:publish]
         redirect_to stories_path,notice: '已成功發布故事'
@@ -54,6 +55,6 @@ class StoriesController < ApplicationController
     @story=current_user.stories.friendly.find(params[:id])
   end
   def story_permit
-    params.require(:story).permit(:title,:content)
+    params.require(:story).permit(:title,:content,:cover_image)
   end
 end

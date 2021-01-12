@@ -90,7 +90,7 @@
                         </footer>
                   </div>
                   <figure class="media-right">
-                        <img src="https://fakeimg.pl/150x150/">
+                        <%=image_tag story.cover_image.variant(resize_to_limit:[150,200]) if story.cover_image.attached? %>
                   </figure>
             </article>
             <%end%>

@@ -3,24 +3,53 @@ class Story < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
 
+  include AASM
+
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #vaild
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  validates :title, presence: true
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #slug about personal picture resize
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
   def slug_candidate
     [
       :title,
       [:title,SecureRandom.hex[0,8]]
     ]
   end
+  
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #modify path show id
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
  
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #relationships
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
-  include AASM
   belongs_to :user
-  validates :title, presence: true
+  has_one_attached :cover_image
+
+ 
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #scope about soft delete
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
   default_scope{where(deleted_at:nil)}
+
   def destroy
     update(deleted_at: Time.now)
   end
+
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #status machine change article status 
+  #文章狀態機使用 gem-aasm
+  #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 
   aasm(column: 'status',no_direct_assignment: true) do
     state :draft, initial: true
     state :published
