@@ -1,12 +1,8 @@
-<section class="comment-editor">
-      <%if user_signed_in? %>
-        <%= form_with model:Comment.new,url: story_comments_path(story),remote:true do |form|%>
 
-        <%=form.text_area :content,rows:5,class:"textarea is-small"%>
-        <%=form.submit '送出',class:"button is-primary"%>
-        <%end%>
-      <%else%>
-        <%=link_to "登入",new_user_session_path,class:"button is-primary"%>
-        <%=link_to "登入",new_user_registration_path,class:"button is-info"%>
-      <%end%>
-    </section>
+<article class="comment">
+  <span class="profile">
+      <%=image_tag comment.user.avatar.variant(resize_to_limit:[50,50]),class:"avatar" if comment.user.avatar.attached?  %>
+    <span class="username"><%=comment.user.username%></span>
+  </span>
+  <%= simple_format(comment.content)%>
+</article>

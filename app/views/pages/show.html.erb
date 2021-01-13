@@ -9,7 +9,7 @@
           <a href="#" class="follow-button">Follow</a>
         </span>
     
-        <article class="content">
+        <article class='content'>
           <%= image_tag @story.cover_image.variant(resize_to_limit:[1000,500]),class:'cover-image' if @story.cover_image.attached?%>
           <p>
            <%= simple_format(@story.content)%>
@@ -19,21 +19,11 @@
           </footer>
         </article>
         <hr>
-        <section class="comments">
+        <section class='comments'>
           <h2>留言</h2>
-            <%=render "comment",story:@story %>
-          <section>
-            <article class="comment">
-              <span class="profile">
-                <img src="https://fakeimg.pl/50x50/" class="avatar"> 
-                <span class="username">高見龍</span>
-              </span>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </article>
-    
-            <article class="comment">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </article>
+            <%=render 'comment_area',story:@story,commnet:@commnet %>
+          <section class='comment-list'>
+            <%= render partial:'comment',collection:@comments%>
           </section>
         </section>
       </section>

@@ -4,10 +4,10 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.references :story, null: false, foreign_key: true
       t.text :content
-      t.datetime :deletee_at
+      t.datetime :deleted_at
 
       t.timestamps
     end
-    add_index :comments, :deletee_at
+    add_index :comments, :deleted_at
   end
 end

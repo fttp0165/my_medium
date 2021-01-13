@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2021_01_13_123800) do
     t.bigint "user_id", null: false
     t.bigint "story_id", null: false
     t.text "content"
-    t.datetime "deletee_at"
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["deletee_at"], name: "index_comments_on_deletee_at"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["story_id"], name: "index_comments_on_story_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
