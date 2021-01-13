@@ -1,0 +1,4 @@
+var list= document.querySelector('section.comment-list')
+var renderContent="<%= j(render 'pages/comment',comment: @comment)%>"
+list.innerHTML=renderContent+list.innerHTML
+document.querySelector('#comment_content').value = ''
