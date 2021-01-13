@@ -39,6 +39,7 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 #中文抬頭處理
 gem 'babosa', '~> 1.0', '>= 1.0.4'
 
+gem 'paranoia', '~> 2.4', '>= 2.4.3'
 
 #-------
 group :development, :test do

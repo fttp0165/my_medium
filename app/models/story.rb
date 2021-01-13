@@ -2,6 +2,9 @@ class Story < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
+  
+
+  acts_as_paranoid
 
   include AASM
 
@@ -49,9 +52,9 @@ class Story < ApplicationRecord
   #instance method
   #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
-  def destroy
-    update(deleted_at: Time.now)
-  end
+  # def destroy
+  #   update(deleted_at: Time.now)
+  # end
 
   #BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
   #status machine change article status 
