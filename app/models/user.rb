@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   #instance method
   def follow?(user)
-    follows.exists(following: user)
+    follows.exists?(following: user)
   end
 
   def follow!(user)
