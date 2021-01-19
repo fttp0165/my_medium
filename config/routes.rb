@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resources :comments,only:[:create]
   end
 
+  resources :users ,only:[] do
+    member do
+      post :follow
+    end
+  end
+
   #/@user/文章標題-123
    get '@:username/:story_id',to:'pages#show',as:'story_page'
    #/@user/
