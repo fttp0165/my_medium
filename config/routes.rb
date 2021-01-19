@@ -4,8 +4,22 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  namespace :api do
+    resources :users ,only:[] do
+      member do
+        post :follow
+      end
+    end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    resources :stories,only:[] do
+      member do
+        post :clap
+      end
+    end
+    
+  end
+
+
   resources :stories do
     member do
       post :clap
@@ -13,11 +27,6 @@ Rails.application.routes.draw do
     resources :comments,only:[:create]
   end
 
-  resources :users ,only:[] do
-    member do
-      post :follow
-    end
-  end
 
   #/@user/文章標題-123
    get '@:username/:story_id',to:'pages#show',as:'story_page'
