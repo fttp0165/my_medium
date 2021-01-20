@@ -7,4 +7,9 @@ class Api::StoriesController < Api::BaseController
       render json:{status:story.clap}
   end
 
+  def bookmark
+    render json:{status: "ok"}
+  end
+
+
 end

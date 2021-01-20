@@ -6,6 +6,7 @@ class Api::UsersController < Api::BaseController
   end
 
 
+
   private
   def find_user
     @user=User.find(params[:id])

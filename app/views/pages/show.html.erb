@@ -1,23 +1,34 @@
 <section class="columns has-text-centered story-content">
       <section class="column is-offset-3 is-6">
+        <!-- 文章標題 -->
         <h1 class="title"><%=@story.title%></h1>
     
         <span class="profile" data-controller="user">
+          <!-- 文章作者 -->
           <%= image_tag @story.user.avatar.variant(resize_to_limit:[50,50]),class:'avatar' if @story.user.avatar.attached?%>
           <span class="username"><%=@story.user.username%></span>
+        
+          <!-- Follow -->
           <%=link_to "#",class:"follow-button",
                          data:{action:'user#follow',
                         user: @story.user.id,
                         'user-target': 'followButton'} do %>
           <%=(user_signed_in? && current_user.follow?(@story.user))? 'Followed' : 'Follow'%>
           <%end%>
+
+          <!-- bookmark -->
+          <%=link_to '#' ,class:'bookmark-button',data:{action:'user#bookmark',slug:@story.slug} do%>
+            <i class="far fa-bookmark",data-target="user.bookmark"></i>
+          <%end%>
         </span>
-    
+        <!-- 文章內容 -->
         <article class='content'>
           <%= image_tag @story.cover_image.variant(resize_to_limit:[1000,500]),class:'cover-image' if @story.cover_image.attached?%>
           <p>
            <%= simple_format(@story.content)%>
           </p>
+
+          <!-- 拍手 -->
           <footer data-controller="story">
             <%=link_to '#',class:'clapButton is-size-2 has-text-primary',data:{action:'story#addClap',slug:@story.slug} do %>
               <i class="far fa-hand-spock"></i>
@@ -26,6 +37,8 @@
           </footer>
         </article>
         <hr>
+
+        <!-- 留言 -->
         <section class='comments'>
           <h2>留言</h2>
             <%=render 'comment_area',story:@story,commnet:@commnet %>

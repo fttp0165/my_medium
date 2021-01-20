@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :stories
   has_many :follows
   has_one_attached :avatar
+  has_many :bookmarks
 
   #instance method
   def follow?(user)
