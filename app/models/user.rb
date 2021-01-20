@@ -28,5 +28,19 @@ class User < ApplicationRecord
       return 'Followed'
     end
   end
+
+  def bookmark?(story)
+    bookmarks.exists?(story: story)
+  end
+
+  def bookmark!(story)
+    if bookmark?(story)
+      bookmarks.find_by(story: story).destroy
+      return 'UnBookmarked'
+    else
+      bookmarks.create(story: story)
+      return 'Bookmarked'
+    end
+  end
   
 end
