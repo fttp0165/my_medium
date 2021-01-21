@@ -4,7 +4,7 @@
 </div>
 <%end%>
 
-<%=form_for story do |form|%>
+<%=form_for story ,html:{class:'story-editor'} do |form|%>
 
   <div class="field">
     
@@ -21,9 +21,14 @@
     <%=form.text_area :content,rows:30,class:"textarea is-primary is-medium"%>
   </div>
   <div class="field">
-      <%=form.submit '儲存草稿',name:'save_as_draft' ,class:"button is-medium"%>
+      <%if story.may_publish?%>
+        <%=form.submit '儲存草稿',name:'save_as_draft' ,class:"button is-medium"%>
+      <%else%>
+        <%=form.submit '更新文章',name:'save_as_draft' ,class:"button is-medium"%>
+      <%end%>
       <%=form.submit '發佈故事',name:'publish' ,class:"button is-medium is-primary" if story.may_publish?%>
       <%=form.submit '故事下架',name:'unpublish' ,class:"button is-medium is-primary" if story.may_unpublish?%>
     </div>
 
 <%end%>
+<%= javascript_pack_tag 'editor'%>

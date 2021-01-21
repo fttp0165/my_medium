@@ -1,3 +1,6 @@
+
+@import './editor.scss';
+
 .navbar-link{
       .user-avatar{
             border-radius:50%;
@@ -10,6 +13,10 @@ form{
             display:block;
       }
 }
+
+ form.story-editor{
+        margin-bottom:100em ;
+      }
 
 .media-content{
       display: inline-block;
@@ -102,6 +109,7 @@ form {
         margin-left: 2em;
         font-size:1.4em;
       }
+     
     }
 
   
