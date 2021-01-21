@@ -14,7 +14,19 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :bookmarks
 
+  #role
+  enum role:{
+     user: 0,
+     vip_user:1,
+     platinum_user:2,
+     admin:3
+}
   #instance method
+
+  def paid_user?
+    vip_user? or platinum_user?
+  end
+  
   def follow?(user)
     follows.exists?(following: user)
   end

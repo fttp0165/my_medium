@@ -26,6 +26,14 @@ Rails.application.routes.draw do
     
   end
 
+#會員付費路徑
+  resources :users,only:[] do
+    collection do
+      get :pricing   #/users/pricing(.:format)
+      get :payment   #/users/payment(.:format)
+    end
+  end
+ 
 
   resources :stories do
     member do
