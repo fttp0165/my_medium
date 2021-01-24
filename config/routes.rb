@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     collection do
       get :pricing   #/users/pricing(.:format)
       get :payment   #/users/payment(.:format)
+      post :pay
     end
   end
  
