@@ -44,6 +44,8 @@ gem 'paranoia', '~> 2.4', '>= 2.4.3'
 #加密 金鑰不加入git 
 gem 'figaro', '~> 1.2'
 
+gem "braintree", "~> 3.1.0"
+
 #-------
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
