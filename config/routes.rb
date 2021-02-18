@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',confirmations: 'confirmations'  }
+ 
   namespace :api do
     post :upload_image, to: 'utils#upload_image'
     resources :users ,only:[] do
