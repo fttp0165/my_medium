@@ -109,4 +109,19 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.hosts << "medium.beginner0.com"
+  config.web_console.whitelisted_ips = '61.231.69.94'
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.default_url_options = { :host => "medium.beginner0.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.mailgun.org',
+  port:                 587,
+  domain:               'medium.beginner0.com',
+  user_name:            ENV['mailer_user_name'],
+  password:             ENV['mailer_password'],
+  authentication:       'plain',
+  enable_starttls_auto: true }
+
+
 end
