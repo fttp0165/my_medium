@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
+  config.web_console.whitelisted_ips = '10.0.2.2'
   private
   def record_not_found
     render file: "#{Rails.root}/public/404.html",
