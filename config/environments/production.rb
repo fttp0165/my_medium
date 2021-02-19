@@ -118,7 +118,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              'smtp.mailgun.org',
-  port:                 587,
+  port:                 2525,
   domain:               'beginner0.com',
   user_name:            ENV['mailer_user_name'],
   password:             ENV['mailer_password'],
