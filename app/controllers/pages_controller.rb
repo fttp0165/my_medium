@@ -5,10 +5,10 @@ class PagesController < ApplicationController
   	@stories=Story.published_stories.limit(4)
     @stories_clap=Story.published_stories.order(:clap).limit(5)
     @stories_sample=Story.published_stories.where("clap>5" ).sample(3)
-    if  @stories_clap.nils?
+    if  @stories_clap.nil?
       @stories_clap=Story.published_stories.limit(5)
     end
-    if  @stories_sample.nils?
+    if  @stories_sample.nil?
       @stories_sample=Story.published_stories.sample(3)
     end
     @story_sample=Story.published_stories.where("clap>20"|| "clap=0").sample
