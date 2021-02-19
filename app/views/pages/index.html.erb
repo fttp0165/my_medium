@@ -3,70 +3,51 @@
       <section class="column">
             <article>
                   <figure class="image">
-                        <img src="https://fakeimg.pl/350x150/f0f0f0" alt="">
+                    <%=link_to story_page_path(@story_sample.user.username,@story_sample) do%>
+                      <%=image_tag @story_sample.cover_image.variant(resize_to_limit:[600,400]) if @story_sample.cover_image.attached? %>
+                    <%end%>
                   </figure>
-                  <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
-                  <p class="content">Providing resources, offering acceptance, and involving people of color are keys to
-                        making your company more diverse...</p>
+                  <h2 class="title is-5"><%=@story_sample.title%></h2>
+                  <p class="content"><%=strip_tags(@story_sample.content).truncate(60)%></p>
                   <footer>
-                        <p>Arielle Wiltz in Modus</p>
-                        <p>Aug 7</p>
+                    <p><%=@story_sample.user.username%></p>
+                    <p><%=time_tag @story_sample.created_at%></p>
                   </footer>
             </article>
       </section>
       <!-- left -->
       <!-- middle -->
       <section class="column">
-            <article class="media">
-                  <figure class="media-left">
-                        <img src="https://fakeimg.pl/100x100/">
-                  </figure>
-                  <div class="media-content">
-                        <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
-                        <footer>
-                              <p>Arielle Wiltz in Modus</p>
-                              <p>Aug 7</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <figure class="media-left">
-                        <img src="https://fakeimg.pl/100x100/">
-                  </figure>
-                  <div class="media-content">
-                        <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
-                        <footer>
-                              <p>Arielle Wiltz in Modus</p>
-                              <p>Aug 7</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <figure class="media-left">
-                        <img src="https://fakeimg.pl/100x100/">
-                  </figure>
-                  <div class="media-content">
-                        <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
-                        <footer>
-                              <p>Arielle Wiltz in Modus</p>
-                              <p>Aug 7</p>
-                        </footer>
-                  </div>
-            </article>
+            <%@stories_sample.each do |story|%>
+              <article class="media">
+                    <figure class="media-left">
+                        <%=link_to story_page_path(story.user.username,story) do%>
+                          <%=image_tag story.cover_image.variant(resize_to_limit:[150,200]) if story.cover_image.attached? %>
+                        <%end%>
+                    </figure>
+                    <div class="media-content">
+                          <h2 class="title is-5"><%=story.title%></h2>
+                          <footer>
+                                <%=strip_tags(story.content).truncate(50)%>
+                          </footer>
+                    </div>
+              </article>
+            <%end%>
       </section>
       <!-- middle -->
       <!-- right -->
       <section class="column">
             <article>
                   <figure class="image">
-                        <img src="https://fakeimg.pl/350x200/f0f0f0" alt="">
+                    <%=link_to story_page_path(@story_current.user.username,@story_current) do%>
+                        <%=image_tag @story_current.cover_image.variant(resize_to_limit:[150,200]) if @story_current.cover_image.attached? %>
+                    <%end%>
                   </figure>
-                  <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
-                  <p class="content">Providing resources, offering acceptance, and involving people of color are keys to
-                        making your company more diverse...</p>
+                  <h2 class="title is-5"><%=@story_current.title%></h2>
+                  <p class="content">  <%=strip_tags(@story_current.content).truncate(50)%></p>
                   <footer>
-                        <p>Arielle Wiltz in Modus</p>
-                        <p>Aug 7</p>
+                        <p><%=link_to @story_current.user.username,story_page_path(@story_current.user.username,@story_current),class:'has-text-dark'%></p>
+                        <p><%=time_tag @story_current.created_at%></p>
                   </footer>
             </article>
       </section>
@@ -76,11 +57,12 @@
 <section class="columns">
       <!-- article list -->
       <section class="column is-two-thirds">
-
             <% @stories.each do |story|%>
             <article class="media">
                   <div class="media-content">
-                        <h2 class="title is-4"><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-dark'%></h2>
+                        <h2 class="title is-4">
+                          <%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-dark'%>
+                        </h2>
                         <p class="content" >
                           <%=strip_tags(story.content).truncate(150)%>   
                         </p>
@@ -90,7 +72,9 @@
                         </footer>
                   </div>
                   <figure class="media-right">
-                        <%=image_tag story.cover_image.variant(resize_to_limit:[150,200]) if story.cover_image.attached? %>
+                    <%=link_to story_page_path(story.user.username,story) do%>
+                      <%=image_tag story.cover_image.variant(resize_to_limit:[150,200]) if story.cover_image.attached? %>
+                    <%end%>
                   </figure>
             </article>
             <%end%>
@@ -99,50 +83,16 @@
       <section class="column">
             <h2 class="title is-4">Popular on Medium</h2>
             <hr>
-            <article class="media">
-                  <div class="media-left">01</div>
-                  <div class="media-content">
-                        <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-                        <footer>
-                              <p>Thomas Oppong</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <div class="media-left">02</div>
-                  <div class="media-content">
-                        <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-                        <footer>
-                              <p>Thomas Oppong</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <div class="media-left">03</div>
-                  <div class="media-content">
-                        <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-                        <footer>
-                              <p>Thomas Oppong</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <div class="media-left">04</div>
-                  <div class="media-content">
-                        <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-                        <footer>
-                              <p>Thomas Oppong</p>
-                        </footer>
-                  </div>
-            </article>
-            <article class="media">
-                  <div class="media-left">05</div>
-                  <div class="media-content">
-                        <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-                        <footer>
-                              <p>Thomas Oppong</p>
-                        </footer>
-                  </div>
-            </article>
+            <% @stories_clap.each_with_index do |story,i|%>
+              <article class="media">
+                    <div class="media-left"><%="#{i+1}"%></div>
+                    <div class="media-content">
+                          <h3><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-info'%></h3>
+                          <footer>
+                                <p><%=link_to story.user.username,user_page_path(story.user.username),class:'has-text-grey-dark'%></p>
+                          </footer>
+                    </div>
+              </article>
+            <%end%>
       </section>
 </section>

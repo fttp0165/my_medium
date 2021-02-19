@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
          <%=link_to root_path,class:'navbar-item' do%>
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+         <i class="fas fa-newspaper has-text-primary-dark"> MY Medium</i>
          <%end%>
     
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -33,7 +33,7 @@
                   <%=content_tag :i, "", class:'fas fa-crown has-text-primary' if current_user.vip_user?%>
                   <%=content_tag :i ,"",class:'fas fa-crown has-text-danger' if current_user.platinum_user?%>
                   <%=avatar(current_user,size:[150,150])%>
-                  <%=current_user.email%> 
+                  <%=current_user.username%> 
                 </a>
         
                 <div class="navbar-dropdown">
