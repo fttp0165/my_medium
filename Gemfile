@@ -45,7 +45,7 @@ gem 'paranoia', '~> 2.4', '>= 2.4.3'
 gem 'figaro', '~> 1.2'
 
 gem "braintree", "~> 3.1.0"
-
+gem 'web-console', '>= 3.3.0'
 
 gem 'omniauth-google-oauth2', '~> 0.8.1'
 gem 'omniauth-rails_csrf_protection'
