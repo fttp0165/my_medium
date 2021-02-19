@@ -62,7 +62,7 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = '61.231.69.94'
   
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.action_mailer.default_url_options = { :host => "medium.beginner0.com" , :protocol => 'http'}
+  config.action_mailer.default_url_options = { :host => "http://medium.beginner0.com" , :protocol => 'http'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              'smtp.mailgun.org',
