@@ -4,10 +4,10 @@
             <article>
                   <figure class="image">
                     <%=link_to story_page_path(@story_sample.user.username,@story_sample) do%>
-                      <%=image_tag @story_sample.cover_image.variant(resize_to_limit:[600,400]) if @story_sample.cover_image.attached? %>
+                      <%=image_tag @story_sample.cover_image.variant(resize_to_limit:[600,450]) if @story_sample.cover_image.attached? %>
                     <%end%>
                   </figure>
-                  <h2 class="title is-5"><%=@story_sample.title%></h2>
+                  <h2 class="title is-5"><%=link_to @story_sample.title,story_page_path(@story_sample.user.username,@story_sample),class:'has-text-dark'%></h2>
                   <p class="content"><%=strip_tags(@story_sample.content).truncate(60)%></p>
                   <footer>
                     <p><%=@story_sample.user.username%></p>
@@ -22,11 +22,11 @@
               <article class="media">
                     <figure class="media-left">
                         <%=link_to story_page_path(story.user.username,story) do%>
-                          <%=image_tag story.cover_image.variant(resize_to_limit:[600,400]) if story.cover_image.attached? %>
+                          <%=image_tag story.cover_image.variant(resize_to_limit:[300,250]) if story.cover_image.attached? %>
                         <%end%>
                     </figure>
                     <div class="media-content">
-                          <h2 class="title is-5"><%=story.title%></h2>
+                          <h2 class="title is-5"><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-dark'%></h2>
                           <footer>
                                 <%=strip_tags(story.content).truncate(50)%>
                           </footer>
@@ -40,11 +40,11 @@
             <article>
                   <figure class="image">
                     <%=link_to story_page_path(@story_current.user.username,@story_current) do%>
-                        <%=image_tag @story_current.cover_image.variant(resize_to_limit:[600,400]) if @story_current.cover_image.attached? %>
+                        <%=image_tag @story_current.cover_image.variant(resize_to_limit:[300,300]) if @story_current.cover_image.attached? %>
                     <%end%>
                   </figure>
-                  <h2 class="title is-5"><%=@story_current.title%></h2>
-                  <p class="content">  <%=strip_tags(@story_current.content).truncate(50)%></p>
+                  <h2 class="title is-5"><%=link_to @story_current.title,story_page_path(@story_current.user.username,@story_current),class:'has-text-dark'%></h2>
+                  <p class="content">  <%=strip_tags(@story_current.content).truncate(80)%></p>
                   <footer>
                         <p><%=link_to @story_current.user.username,story_page_path(@story_current.user.username,@story_current),class:'has-text-dark'%></p>
                         <p><%=time_tag @story_current.created_at%></p>
