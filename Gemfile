@@ -45,7 +45,7 @@ gem 'paranoia', '~> 2.4', '>= 2.4.3'
 gem 'figaro', '~> 1.2'
 
 gem "braintree", "~> 3.1.0"
-gem 'web-console', '>= 3.3.0'
+
 
 gem 'omniauth-google-oauth2', '~> 0.8.1'
 gem 'omniauth-rails_csrf_protection'
@@ -63,6 +63,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb-unicode', '~> 0.0.5'
+  gem 'pry-rails', '~> 0.3.9'
 end
 
 group :test do
