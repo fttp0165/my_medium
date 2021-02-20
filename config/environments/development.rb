@@ -5,7 +5,7 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.hosts << "medium.beginner0.com"
+  config.hosts << ENV['mail_host'] 
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -59,15 +59,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.action_mailer.perform_deliveries = true
-  config.web_console.whitelisted_ips = '61.231.69.94'
-  
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.action_mailer.default_url_options = { :host => "http://medium.beginner0.com" , :protocol => 'http'}
+  config.action_mailer.default_url_options = { :host => ENV['mail_host']  , :protocol => 'http'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              'smtp.mailgun.org',
   port:                 587,
-  domain:               'beginner0.com',
+  domain:               ENV['domain'],
   user_name:            ENV['mailer_user_name'],
   password:             ENV['mailer_password'],
   authentication:       'plain',

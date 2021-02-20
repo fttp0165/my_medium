@@ -109,15 +109,15 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.hosts << "email.beginner0.com"
+  config.hosts << ENV['mail_host'] 
   config.action_mailer.perform_deliveries = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.action_mailer.default_url_options = { :host => "http://email.beginner0.com" , :protocol => 'http'}
+  config.action_mailer.default_url_options = { :host => ENV['mail_host'] , :protocol => 'http'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              'smtp.mailgun.org',
   port:                 587,
-  domain:               'email.beginner0.com',
+  domain:               ENV['domain'],
   user_name:            ENV['mailer_user_name'],
   password:             ENV['mailer_password'],
   authentication:       'plain',
