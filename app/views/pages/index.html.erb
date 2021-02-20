@@ -20,12 +20,12 @@
       <section class="column is-desktop  ">
             <%@stories_sample.each do |story|%>
               <article class="media ">
-                    <figure class="media-left  ">
+                    <figure >
                         <%=link_to story_page_path(story.user.username,story) do%>
                           <%=image_tag story.cover_image.variant(resize_to_limit:[280,250]),class:'is-4by3' if story.cover_image.attached? %>
                         <%end%>
                     </figure>
-                    <div class="media-content ">
+                    <div class="media-content is-mobile ">
                           <h2 class="title is-4"><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-dark is-4'%></h2>
                           <footer class='is-6'>
                                 <%=strip_tags(story.content).truncate(30)%>
