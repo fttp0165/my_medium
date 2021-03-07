@@ -24,11 +24,13 @@ class PagesController < ApplicationController
   end
 
   def pop
+    @authors=[]
     @follows=Follow.group(:following_id).count.sort_by{|_key, value| value}.reverse
     @follows.each do |user_id|
-      @authors=User.find(user_id)
+      @authors.push(User.find(user_id[0]))
     end
     @authors
+
   end
 
   def  show
