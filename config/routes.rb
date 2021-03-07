@@ -51,5 +51,7 @@ Rails.application.routes.draw do
    get '@:username/:story_id',to:'pages#show',as:'story_page'
    #/@user/
    get '@:username',to:'pages#user',as:'user_page'
+   get 'hot_stories',to:'pages#hot',as:'hot_page'
+   get 'pop_stories',to:'pages#pop',as:'pop_page'
    root "pages#index"
 end

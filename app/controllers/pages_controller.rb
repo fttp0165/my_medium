@@ -19,6 +19,18 @@ class PagesController < ApplicationController
     
   end
 
+  def hot
+    @stories=Story.published_stories.where("clap>20"|| "clap>=0")
+  end
+
+  def pop
+    @follows=Follow.group(:following_id).count.sort_by{|_key, value| value}.reverse
+    @follows.each do |user_id|
+      @authors=User.find(user_id)
+    end
+    @authors
+  end
+
   def  show
     @comment=@story.comments.new
     @comments=@story.comments.order(id: :desc)

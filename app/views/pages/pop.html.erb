@@ -1,0 +1,16 @@
+
+
+<section id="hot" class="columns">
+  <section class="column is-two-thirds">
+    <% @authors.each do |author|%>
+      <article class="media">
+        <div class="media-content text-center">
+              <h2 class="title is-4">
+                <%=avatar(author,size:[300,300])%>
+                <%=link_to author.username,user_page_path(author.username,author),class:'has-text-dark'%>
+              </h2>
+        </div>
+        </figure>
+      </article>
+    <%end%>
+  </section>

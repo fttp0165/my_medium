@@ -10,7 +10,7 @@
                   <h2 class="title is-5"><%=link_to @story_sample.title,story_page_path(@story_sample.user.username,@story_sample),class:'has-text-dark'%></h2>
                   <p class="content" style="word-break: break-all;"><%=strip_tags(@story_sample.content).truncate(200)%></p>
                   <footer>
-                    <p><%=@story_sample.user.username%></p>
+                    <p><%=link_to @story_sample.user.username,user_page_path(@story_sample.user.username),class:"has-text-grey-dark"%></p>
                     <p><%=time_tag @story_sample.created_at%></p>
                   </footer>
             </article>
@@ -28,7 +28,7 @@
                     <div class="media-content is-mobile ">
                           <h2 class="title is-4"><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-dark is-4'%></h2>
                           <footer class='is-6'>
-                                <%=strip_tags(story.content).truncate(30)%>
+                            <%=strip_tags(story.content).truncate(30)%>
                           </footer>
                     </div>
               </article>
@@ -46,7 +46,7 @@
                   <h2 class="title is-5"><%=link_to @story_current.title,story_page_path(@story_current.user.username,@story_current),class:'has-text-dark'%></h2>
                   <p class="content">  <%=strip_tags(@story_current.content).truncate(150)%></p>
                   <footer>
-                        <p><%=link_to @story_current.user.username,story_page_path(@story_current.user.username,@story_current),class:'has-text-dark'%></p>
+                        <p><%=link_to @story_current.user.username,user_page_path(@story_current.user.username) ,class:'has-text-grey-dark'%></p>
                         <p><%=time_tag @story_current.created_at%></p>
                   </footer>
             </article>
@@ -90,7 +90,7 @@
         <div class="media-content">
           <h3><%=link_to story.title,story_page_path(story.user.username,story),class:'has-text-info'%></h3>
           <footer>
-                <p><%=link_to story.user.username,user_page_path(story.user.username),class:'has-text-grey-dark'%></p>
+                <p><%=link_to story.user.username,user_page_path(story.user.username),class:"has-text-grey-dark"%></p>
           </footer>
         </div>
       </article>
