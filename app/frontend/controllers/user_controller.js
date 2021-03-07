@@ -34,6 +34,9 @@ export default class extends Controller {
          .then(function(response){
            console.log(response.data)
            switch(response.data.status){
+             case 'sign_in_first':
+              alert('你必須先登入')
+              break
              case 'Bookmarked':
               icon.classList.add('fas')
               icon.classList.remove('far')

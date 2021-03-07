@@ -4,6 +4,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  
+  extend FriendlyId
+  friendly_id :slug_candidate, use: :slugged      
+
   has_many :stories
   #validations
   validates :username, presence: true,uniqueness:true
@@ -65,3 +69,12 @@ class User < ApplicationRecord
     end
   end
 end
+
+private
+
+  def slug_candidate
+    [
+      :username,
+      [:username,SecureRandom.hex[0,8]]
+    ]
+  end

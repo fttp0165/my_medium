@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+   
+  
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', 
     registrations: 'users/registrations'  }
+  
+  
  
   namespace :api do
     post :upload_image, to: 'utils#upload_image'
@@ -47,5 +51,5 @@ Rails.application.routes.draw do
    get '@:username/:story_id',to:'pages#show',as:'story_page'
    #/@user/
    get '@:username',to:'pages#user',as:'user_page'
-  root "pages#index"
+   root "pages#index"
 end

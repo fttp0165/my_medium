@@ -1,0 +1,63 @@
+
+<div class="container" data-controller="user">
+  <section id="author_page">
+  <%=avatar(@author,size:[300,300])%>
+  
+  <div class="author_fllow">
+   
+    <h2 class="level-item has-text-centered"><%=@author.username%></h2>
+      <!-- Follow -->
+      <%=link_to "#",class:"follow-button ",
+      data:{action:'user#follow',
+      user: @author.id,
+     'user-target': 'followButton'} do %>
+       <%=(user_signed_in? && current_user.follow?(@author))? 'Followed' : 'Follow'%>
+     <%end%>
+  </div>
+  <!-- author intro -->
+  <pre><%=@author.intro%></pre>
+
+
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">文章</p>
+        <p class="title"><%=@author.stories.published.count%></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">被追蹤</p>
+        <p class="title"><%=Follow.where(following: @author.id).count%></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">追蹤</p>
+        <p class="title"><%=@author.follows.count%></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">clip</p>
+        <p class="title"><%=@author.stories.published.sum(:clap)%></p>
+      </div>
+    </div>
+  </nav>
+  <hr />
+  </section>
+  <section id="article_list">
+    <%@author.stories.published.each do |story|%>
+    <div class="notification">
+      <li><%=link_to story.title,story_page_path(@author.username,story)%></li>
+      <li ><%=time_tag story.created_at,class:"created_time"%></li>
+  </div>
+    <%end%>
+  </section>
+
+  <footer>
+
+
+  </footer>
+</div>
+`

@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   end
 
   def user
-    
+    @author=User.find_by(username: params[:username])
   end
 
 

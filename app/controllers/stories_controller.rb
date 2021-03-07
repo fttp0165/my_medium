@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
       if params[:publish]
         redirect_to stories_path,notice: '已成功發布故事'
       else
-        redirect_to eedit_story_path(@story),notice: '故事儲存'
+        redirect_to edit_story_path(@story),notice: '故事儲存'
       end 
     else
       render :new

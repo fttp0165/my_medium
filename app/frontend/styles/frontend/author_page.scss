@@ -1,0 +1,47 @@
+
+
+#author_page{
+      text-align: center;
+      margin-top: 50px;
+      line-height: 100px;
+      img{
+          width:300px;
+          height:300px;
+          border-radius: 150px;
+      }
+      h2{
+        font-weight: 20em;
+        font-size: 50px;
+        display: inline-block;
+      }
+      
+      pre{
+        font-weight: 20em;
+        font-size: 30px;
+        background-color: #fff;
+      }
+      .follow-button {
+        border: solid darkgray 1px;
+        padding: 1px 8px;
+        margin-left: 1em;
+        border-radius: 3px;
+        color: white;
+        background-color: #76D9B9;
+        &:hover {
+          background-color: #15AB89;
+          color: white;
+        }
+      }
+}
+#article_list{
+    list-style: none;
+    text-align: center;
+    li{
+      font-size: 30px;
+      text-decoration:none;
+    }
+    li .created_time{
+      font-size: 10px;
+      padding-left: 60%;
+    }
+}
